@@ -15,6 +15,7 @@
     @include 'openvpn'
     @include 'management'
     @include 'webproxy'
+    @include 'shorewall'
 #    @include 'openvpnlog'
 #    @include 'firewall'
 
