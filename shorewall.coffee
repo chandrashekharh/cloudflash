@@ -155,8 +155,6 @@
                 dmz:
                     items: {"type":"string"}
 
-
-
     schemanet =
         name: "shorewallnet"
         type: "object"
@@ -190,8 +188,6 @@
                 'BROADCAST':       { type: "string", required: true }
                 'OPTIONS':           { type: "string", required: true }
 
-
-
     schemarules =
         name: "shorewallrules"
         type: "object"
@@ -202,7 +198,6 @@
                     items: {"type":"string"}
                 ACCEPT:
                     items: {"type":"string"}
-
 
     schemaaccept =
         name: "shorewallaccept"
@@ -225,7 +220,6 @@
                 'HEADERS':         { type: "string", required: true }
                 'SWITCH':          { type: "string", required: true }
                     
-
 
     schemadrop =
         name: "shorewalldrop"
@@ -424,9 +418,69 @@
                 'IN-OPTIONS': { type: "string", required: true }
                 'OUT-OPTIONS':{ type: "string", required: true }
 
+    schemafwpolicy =
+        name: "shorewallfwpolicy"
+        type: "object"
+        additionalProperties: false
+        properties:
+                commonname :  {"type":"string", "required":true}
+                'SRC_ZONES':  { type: "string", required: true }
+                'DEST_ZONE':  { type: "string", required: true }
+                'POLICY':     { type: "string", required: true }
+                'LOG_LEVEL':  { type: "string", required: true }
+                'LIMIT_BURST':{ type: "string", required: true }
 
-  
-   # helper routine to validate shorewall with schema
+    schemanetpolicy =
+        name: "shorewallnetpolicy"
+        type: "object"
+        additionalProperties: false
+        properties:
+                commonname :  {"type":"string", "required":true}
+                'SRC_ZONES':  { type: "string", required: true }
+                'DEST_ZONE':  { type: "string", required: true }
+                'POLICY':     { type: "string", required: true }
+                'LOG_LEVEL':  { type: "string", required: true }
+                'LIMIT_BURST':{ type: "string", required: true }
+
+    schemalocpolicy =
+        name: "shorewalllocpolicy"
+        type: "object"
+        additionalProperties: false
+        properties:
+                commonname :  {"type":"string", "required":true}
+                'SRC_ZONES':  { type: "string", required: true }
+                'DEST_ZONE':  { type: "string", required: true }
+                'POLICY':     { type: "string", required: true }
+                'LOG_LEVEL':  { type: "string", required: true }
+                'LIMIT_BURST':{ type: "string", required: true }
+
+    schemadmzpolicy =
+        name: "shorewalldmzpolicy"
+        type: "object"
+        additionalProperties: false
+        properties:
+                commonname :  {"type":"string", "required":true}
+                'SRC_ZONES':  { type: "string", required: true }
+                'DEST_ZONE':  { type: "string", required: true }
+                'POLICY':     { type: "string", required: true }
+                'LOG_LEVEL':  { type: "string", required: true }
+                'LIMIT_BURST':{ type: "string", required: true }
+
+    schemaallpolicy =
+        name: "shorewallallpolicy"
+        type: "object"
+        additionalProperties: false
+        properties:
+                commonname :  {"type":"string", "required":true}
+                'SRC_ZONES':  { type: "string", required: true }
+                'DEST_ZONE':  { type: "string", required: true }
+                'POLICY':     { type: "string", required: true }
+                'LOG_LEVEL':  { type: "string", required: true }
+                'LIMIT_BURST':{ type: "string", required: true }
+
+
+
+  # helper routine to validate shorewall with schema
     validateShorewall = ->
         console.log @body
         console.log 'performing schema validation on incoming shorewall JSON'
@@ -468,6 +522,7 @@
         console.log result
         return @next new Error "Invalid service posting!: #{result.errors}" unless result.valid
         @next()
+
     validateShorewallloc = ->
         console.log @body
         console.log 'performing schema validation on incoming shorewall interfaces loc JSON'
@@ -484,8 +539,6 @@
         return @next new Error "Invalid service posting!: #{result.errors}" unless result.valid
         @next()
 
-
-
     validateShorewallrules = ->
         console.log @body
         console.log 'performing schema validation on incoming shorewall rules JSON'
@@ -501,7 +554,6 @@
         console.log result
         return @next new Error "Invalid service posting!: #{result.errors}" unless result.valid
         @next()
-
 
     validateShorewalldrop = ->
         console.log @body
@@ -559,7 +611,6 @@
         return @next new Error "Invalid service posting!: #{result.errors}" unless result.valid
         @next()
 
-
     validateShorewallfwzones = ->
         console.log @body
         console.log 'performing schema validation on incoming shorewall reject rules JSON'
@@ -575,6 +626,7 @@
         console.log result
         return @next new Error "Invalid service posting!: #{result.errors}" unless result.valid
         @next()
+
     validateShorewallnetzones = ->
         console.log @body
         console.log 'performing schema validation on incoming shorewall reject rules JSON'
@@ -582,6 +634,7 @@
         console.log result
         return @next new Error "Invalid service posting!: #{result.errors}" unless result.valid
         @next()
+
     validateShorewalldmzzones = ->
         console.log @body
         console.log 'performing schema validation on incoming shorewall reject rules JSON'
@@ -597,6 +650,7 @@
         console.log result
         return @next new Error "Invalid service posting!: #{result.errors}" unless result.valid
         @next()
+
     validateShorewallfwpolicy = ->
         console.log @body
         console.log 'performing schema validation on incoming shorewall reject rules JSON'
@@ -613,7 +667,6 @@
         return @next new Error "Invalid service posting!: #{result.errors}" unless result.valid
         @next()
 
-
     validateShorewalllocpolicy = ->
         console.log @body
         console.log 'performing schema validation on incoming shorewall reject rules JSON'
@@ -621,7 +674,6 @@
         console.log result
         return @next new Error "Invalid service posting!: #{result.errors}" unless result.valid
         @next()
-
 
     validateShorewallallpolicy = ->
         console.log @body
@@ -865,11 +917,9 @@
                 exec "mkdir -p #{dir}", (error, stdout, stderr) =>
                     unless error
                         fs.createWriteStream(filename, flags: "a").write config
-#                        fs.writeFileSync filename, config
             else
 
                 fs.createWriteStream(filename, flags: "a").write config
-#                fs.writeFileSync filename, config
 
             #exec "service shorewall restart"
 
@@ -906,10 +956,8 @@
                 exec "mkdir -p #{dir}", (error, stdout, stderr) =>
                     unless error
                         fs.createWriteStream(filename, flags: "a").write config
-#                        fs.writeFileSync filename, config
             else
                 fs.createWriteStream(filename, flags: "a").write config
-#                fs.writeFileSync filename, config
 
             #exec "service shorewall restart"
 
@@ -946,10 +994,8 @@
                 exec "mkdir -p #{dir}", (error, stdout, stderr) =>
                     unless error
                         fs.createWriteStream(filename, flags: "a").write config
-#                        fs.writeFileSync filename, config
             else
                 fs.createWriteStream(filename, flags: "a").write config
-#                fs.writeFileSync filename, config
 
             #exec "service shorewall restart"
 
@@ -986,10 +1032,8 @@
                 exec "mkdir -p #{dir}", (error, stdout, stderr) =>
                     unless error
                         fs.createWriteStream(filename, flags: "a").write config
-#                        fs.writeFileSync filename, config
             else
                 fs.createWriteStream(filename, flags: "a").write config
-#                fs.writeFileSync filename, config
 
             #exec "service shorewall restart"
 
@@ -1026,10 +1070,8 @@
                 exec "mkdir -p #{dir}", (error, stdout, stderr) =>
                     unless error
                         fs.createWriteStream(filename, flags: "a").write config
-#                        fs.writeFileSync filename, config
             else
                 fs.createWriteStream(filename, flags: "a").write config
-#                fs.writeFileSync filename, config
 
             #exec "service shorewall restart"
 
@@ -1066,10 +1108,8 @@
                 exec "mkdir -p #{dir}", (error, stdout, stderr) =>
                     unless error
                         fs.createWriteStream(filename, flags: "a").write config
-#                        fs.writeFileSync filename, config
             else
                 fs.createWriteStream(filename, flags: "a").write config
-#                fs.writeFileSync filename, config
 
             #exec "service shorewall restart"
 
@@ -1107,10 +1147,8 @@
                 exec "mkdir -p #{dir}", (error, stdout, stderr) =>
                     unless error
                         fs.createWriteStream(filename, flags: "a").write config
-#                        fs.writeFileSync filename, config
             else
                 fs.createWriteStream(filename, flags: "a").write config
-#                fs.writeFileSync filename, config
 
             #exec "service shorewall restart"
 
@@ -1147,10 +1185,8 @@
                 exec "mkdir -p #{dir}", (error, stdout, stderr) =>
                     unless error
                         fs.createWriteStream(filename, flags: "a").write config
-#                        fs.writeFileSync filename, config
             else
                 fs.createWriteStream(filename, flags: "a").write config
-#                fs.writeFileSync filename, config
 
             #exec "service shorewall restart"
 
@@ -1187,10 +1223,8 @@
                 exec "mkdir -p #{dir}", (error, stdout, stderr) =>
                     unless error
                         fs.createWriteStream(filename, flags: "a").write config
-#                        fs.writeFileSync filename, config
             else
                 fs.createWriteStream(filename, flags: "a").write config
-#                fs.writeFileSync filename, config
 
             #exec "service shorewall restart"
 
@@ -1200,7 +1234,6 @@
                 @send { result: true }
         catch err
             @next new Error "Unable to write shorewall configuration into #{filename}!"
-
 
     @post '/services/:id/shorewall/interfaces/loc', loadService, validateShorewallloc, ->  
 
@@ -1227,10 +1260,8 @@
                 exec "mkdir -p #{dir}", (error, stdout, stderr) =>
                     unless error
                         fs.createWriteStream(filename, flags: "a").write config
-#                        fs.writeFileSync filename, config
             else
                 fs.createWriteStream(filename, flags: "a").write config
-#                fs.writeFileSync filename, config
 
             #exec "service shorewall restart"
 
@@ -1244,9 +1275,6 @@
 
     @post '/services/:id/shorewall/interfaces/dmz', loadService, validateShorewalldmz, ->  
 
-        if @body.ZONE is "dmz"
-#            @send { result: false }
-         
             service = @request.service
             config = ''
             for key, val of @body
@@ -1273,10 +1301,8 @@
                     exec "mkdir -p #{dir}", (error, stdout, stderr) =>
                         unless error
                             fs.createWriteStream(filename, flags: "a").write config
-#                        fs.writeFileSync filename, config
                 else
                     fs.createWriteStream(filename, flags: "a").write config
-#                fs.writeFileSync filename, config
 
             #exec "service shorewall restart"
 
@@ -1287,15 +1313,8 @@
             catch err
                 @next new Error "Unable to write shorewall configuration into #{filename}!"
 
-
-        @send { result: false }
-#        @next new Error "Given input is not right"
-
-
     @post '/services/:id/shorewall/zones/fwzones', loadService, validateShorewallfwzones, ->  
 
-
-#        if @body.ZONES val is "fw"
           service = @request.service
           config = ''
           for key, val of @body
@@ -1324,12 +1343,9 @@
                   @send { result: true }
           catch err
               @next new Error "Unable to write shorewall configuration into #{filename}!"
-
 
     @post '/services/:id/shorewall/zones/loczones', loadService, validateShorewallloczones, ->  
 
-
-#        if @body.ZONES val is "fw"
           service = @request.service
           config = ''
           for key, val of @body
@@ -1358,12 +1374,9 @@
                   @send { result: true }
           catch err
               @next new Error "Unable to write shorewall configuration into #{filename}!"
-
 
     @post '/services/:id/shorewall/zones/netzones', loadService, validateShorewallnetzones, ->  
 
-
-#        if @body.ZONES val is "fw"
           service = @request.service
           config = ''
           for key, val of @body
@@ -1392,13 +1405,10 @@
                   @send { result: true }
           catch err
               @next new Error "Unable to write shorewall configuration into #{filename}!"
-
 
 
     @post '/services/:id/shorewall/zones/dmzzones', loadService, validateShorewalldmzzones, ->  
 
-
-#        if @body.ZONES val is "fw"
           service = @request.service
           config = ''
           for key, val of @body
@@ -1429,11 +1439,8 @@
               @next new Error "Unable to write shorewall configuration into #{filename}!"
 
 
+    @post '/services/:id/shorewall/policy/fwpolicy', loadService, validateShorewallfwpolicy, ->  
 
-    @post '/services/:id/shorewall/policy/fwploicy', loadService, validateShorewallfwpolicy, ->  
-
-
-#        if @body.ZONES val is "fw"
           service = @request.service
           config = ''
           for key, val of @body
@@ -1463,11 +1470,8 @@
           catch err
               @next new Error "Unable to write shorewall configuration into #{filename}!"
 
-
     @post '/services/:id/shorewall/policy/netpolicy', loadService, validateShorewallnetpolicy, ->  
 
-
-#        if @body.ZONES val is "fw"
           service = @request.service
           config = ''
           for key, val of @body
@@ -1500,8 +1504,6 @@
 
     @post '/services/:id/shorewall/policy/locpolicy', loadService, validateShorewalllocpolicy, ->  
 
-
-#        if @body.ZONES val is "fw"
           service = @request.service
           config = ''
           for key, val of @body
@@ -1530,13 +1532,10 @@
                   @send { result: true }
           catch err
               @next new Error "Unable to write shorewall configuration into #{filename}!"
-
 
 
     @post '/services/:id/shorewall/policy/dmzpolicy', loadService, validateShorewalldmzpolicy, ->  
 
-
-#        if @body.ZONES val is "fw"
           service = @request.service
           config = ''
           for key, val of @body
@@ -1567,12 +1566,8 @@
               @next new Error "Unable to write shorewall configuration into #{filename}!"
 
 
-
-
     @post '/services/:id/shorewall/policy/allpolicy', loadService, validateShorewallallpolicy, ->  
 
-
-#        if @body.ZONES val is "fw"
           service = @request.service
           config = ''
           for key, val of @body
