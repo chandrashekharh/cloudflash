@@ -18,49 +18,49 @@
         type: "object"
         additionalProperties: false
         properties:
-                'STARTUP_ENABLED':   { type: "string", required: true }
-                'VERBOSITY':         { type: "string", required: true }
-                'LOGFILE':           { type: "string", required: true }
-                'STARTUP_LOG':       { type: "string", required: true }
-                'LOG_VERBOSITY':     { type: "string", required: true }
-                'LOGFORMAT':         { type: "string", required: true }
-                'LOGTAGONLY':        { type: "string", required: true }
-                'LOGRATE':           { type: "string", required: true } 
-                'LOGBURST':          { type: "string", required: true }
-                'LOGALLNEW':           { type: "string", required: true }
-                'BLACKLIST_LOGLEVEL':  { type: "string", required: true }
-                'MACLIST_LOG_LEVEL':   { type: "string", required: true }
-                'TCP_FLAGS_LOG_LEVEL': { type: "string", required: true }
-                'SMURF_LOG_LEVEL':     { type: "string", required: true }
-                'LOG_MARTIANS':        { type: "string", required: true }
-                'IPTABLES':            { type: "string", required: true }
-                'IP':                  { type: "string", required: true }
-                'TC':                  { type: "string", required: true }
-                'IPSET':               { type: "string", required: true }
-                'PERL':                { type: "string", required: true }
-                'PATH':                { type: "string", required: true }
-                'SHOREWALL_SHELL':     { type: "string", required: true }
-                'SUBSYSLOCK':          { type: "string", required: true }
-                'MODULESDIR':          { type: "string", required: true }
-                'CONFIG_PATH':         { type: "string", required: true }
-                'RESTOREFILE':         { type: "string", required: true }
-                'IPSECFILE':           { type: "string", required: true }
-                'LOCKFILE':            { type: "string", required: true }
-                'DROP_DEFAULT':        { type: "string", required: true }
-                'REJECT_DEFAULT':      { type: "string", required: true }
-                'ACCEPT_DEFAULT':      { type: "string", required: true }
-                'QUEUE_DEFAULT':       { type: "string", required: true }
-                'NFQUEUE_DEFAULT':     { type: "string", required: true }
-                'RSH_COMMAND':         { type: "string", required: true }
-                'RCP_COMMAND':         { type: "string", required: true}
-                'IP_FORWARDING':       { type: "string", required: true }
-                'ADD_IP_ALIASES':      { type: "string", required: true }
-                'ADD_SNAT_ALIASES':    { type: "string", required: true }
-                'RETAIN_ALIASES':      { type: "string", required: true }
-                'TC_ENABLED':          { type: "string", required: true }
-                'TC_EXPERT':           { type: "string", required: true }
-                'TC_PRIOMAP':          { type: "string", required: true }
-                'CLEAR_TC':            { type: "string", required: true }
+                'STARTUP_ENABLED':       { type: "string", required: true }
+                'VERBOSITY':             { type: "string", required: true }
+                'LOGFILE':               { type: "string", required: true }
+                'STARTUP_LOG':           { type: "string", required: true }
+                'LOG_VERBOSITY':         { type: "string", required: true }
+                'LOGFORMAT':             { type: "string", required: true }
+                'LOGTAGONLY':            { type: "string", required: true }
+                'LOGRATE':               { type: "string", required: true } 
+                'LOGBURST':              { type: "string", required: true }
+                'LOGALLNEW':             { type: "string", required: true }
+                'BLACKLIST_LOGLEVEL':    { type: "string", required: true }
+                'MACLIST_LOG_LEVEL':     { type: "string", required: true }
+                'TCP_FLAGS_LOG_LEVEL':   { type: "string", required: true }
+                'SMURF_LOG_LEVEL':       { type: "string", required: true }
+                'LOG_MARTIANS':          { type: "string", required: true }
+                'IPTABLES':              { type: "string", required: true }
+                'IP':                    { type: "string", required: true }
+                'TC':                    { type: "string", required: true }
+                'IPSET':                 { type: "string", required: true }
+                'PERL':                  { type: "string", required: true }
+                'PATH':                  { type: "string", required: true }
+                'SHOREWALL_SHELL':       { type: "string", required: true }
+                'SUBSYSLOCK':            { type: "string", required: true }
+                'MODULESDIR':            { type: "string", required: true }
+                'CONFIG_PATH':           { type: "string", required: true }
+                'RESTOREFILE':           { type: "string", required: true }
+                'IPSECFILE':             { type: "string", required: true }
+                'LOCKFILE':              { type: "string", required: true }
+                'DROP_DEFAULT':          { type: "string", required: true }
+                'REJECT_DEFAULT':        { type: "string", required: true }
+                'ACCEPT_DEFAULT':        { type: "string", required: true }
+                'QUEUE_DEFAULT':         { type: "string", required: true }
+                'NFQUEUE_DEFAULT':       { type: "string", required: true }
+                'RSH_COMMAND':           { type: "string", required: true }
+                'RCP_COMMAND':           { type: "string", required: true }
+                'IP_FORWARDING':         { type: "string", required: true }
+                'ADD_IP_ALIASES':        { type: "string", required: true }
+                'ADD_SNAT_ALIASES':      { type: "string", required: true }
+                'RETAIN_ALIASES':        { type: "string", required: true }
+                'TC_ENABLED':            { type: "string", required: true }
+                'TC_EXPERT':             { type: "string", required: true }
+                'TC_PRIOMAP':            { type: "string", required: true }
+                'CLEAR_TC':              { type: "string", required: true }
                 'MARK_IN_FORWARD_CHAIN': { type: "string", required: true }
                 'CLAMPMSS':              { type: "string", required: true }
                 'ROUTE_FILTER':          { type: "string", required: true }
@@ -93,20 +93,20 @@
                 'AUTO_COMMENT':          { type: "string", required: true }
                 'MANGLE_ENABLED':        { type: "string", required: true }
                 'USE_DEFAULT_RT':        { type: "string", required: true }
-                'RESTORE_DEFAULT_ROUTE':  { type: "string", required: true }
-                'AUTOMAKE':               { type: "string", required: true }
+                'RESTORE_DEFAULT_ROUTE': { type: "string", required: true }
+                'AUTOMAKE':              { type: "string", required: true }
                 'WIDE_TC_MARKS':         { type: "string", required: true }
-                'TRACK_PROVIDERS':        { type: "string", required: true }
-                'ZONE2ZONE':              { type: "string", required: true }
-                'ACCOUNTING':             { type: "string", required: true }
-                'DYNAMIC_BLACKLIST':      { type: "string", required: true }
-                'OPTIMIZE_ACCOUNTING':    { type: "string"  }
-                'LOAD_HELPERS_ONLY':      { type: "string"  }
-                'REQUIRE_INTERFACE':      { type: "string"  }
-                'FORWARD_CLEAR_MARK':     { type: "string"  }
-                'BLACKLIST_DISPOSITION':  { type: "string"  }
-                'MACLIST_DISPOSITION':    { type: "string"  }
-                'TCP_FLAGS_DISPOSITION':  { type: "string"  } 
+                'TRACK_PROVIDERS':       { type: "string", required: true }
+                'ZONE2ZONE':             { type: "string", required: true }
+                'ACCOUNTING':            { type: "string", required: true }
+                'DYNAMIC_BLACKLIST':     { type: "string", required: true }
+                'OPTIMIZE_ACCOUNTING':   { type: "string"  }
+                'LOAD_HELPERS_ONLY':     { type: "string"  }
+                'REQUIRE_INTERFACE':     { type: "string"  }
+                'FORWARD_CLEAR_MARK':    { type: "string"  }
+                'BLACKLIST_DISPOSITION': { type: "string"  }
+                'MACLIST_DISPOSITION':   { type: "string"  }
+                'TCP_FLAGS_DISPOSITION': { type: "string"  } 
 
     #Test schema to validate incoming JSON
     schemaZones =
@@ -116,13 +116,13 @@
         properties:
                 commonname : {"type":"string", "required":true}
                 fw:
-                    items: {type: "string"}
+                    items:   {"type": "string"}
                 net:
-                    items: {"type":"string"}
+                    items:   {"type":"string"}
                 loc:
-                    items: {"type":"string"}
+                    items:   {"type":"string"}
                 dmz:
-                    items: {"type":"string"}
+                    items:   {"type":"string"}
 
 
     #Test schema to validate incoming JSON
@@ -133,15 +133,15 @@
         properties:
                 commonname : {"type":"string", "required":true}
                 "$FW": 
-                    items: {"type":"string"}
+                    items:   {"type":"string"}
                 net:
-                    items: {"type":"string"}
+                    items:   {"type":"string"}
                 loc:
-                    items: {"type":"string"}
+                    items:   {"type":"string"}
                 dmz:
-                    items: {"type":"string"}
+                    items:   {"type":"string"}
                 all:
-                    items: {"type":"string"}             
+                    items:   {"type":"string"}             
 
     schemainterfaces =
         name: "shorewallinterfaces"
@@ -150,11 +150,11 @@
         properties:
                 commonname : {"type":"string", "required":true}
                 net:
-                    items: {"type":"string"}
+                    items:   {"type":"string"}
                 loc:
-                    items: {"type":"string"}
+                    items:   {"type":"string"}
                 dmz:
-                    items: {"type":"string"}
+                    items:   {"type":"string"}
 
     schemanet =
         name: "shorewallnet"
@@ -162,10 +162,10 @@
         additionalProperties: false
         properties:
                 commonname : {"type":"string", "required":true}
-                'ZONE':          { type: "string", required: true }
-                'INTERFACE':     { type: "string", required: true }
-                'BROADCAST':       { type: "string", required: true }
-                'OPTIONS':           { type: "string", required: true }
+                'ZONE':      { type: "string", required: true }
+                'INTERFACE': { type: "string", required: true }
+                'BROADCAST': { type: "string", required: true }
+                'OPTIONS':   { type: "string", required: true }
 
     schemaloc =
         name: "shorewallloc"
@@ -173,10 +173,10 @@
         additionalProperties: false
         properties:
                 commonname : {"type":"string", "required":true}
-                'ZONE':          { type: "string", required: true }
-                'INTERFACE':     { type: "string", required: true }
-                'BROADCAST':       { type: "string", required: true }
-                'OPTIONS':           { type: "string", required: true }
+                'ZONE':      { type: "string", required: true }
+                'INTERFACE': { type: "string", required: true }
+                'BROADCAST': { type: "string", required: true }
+                'OPTIONS':   { type: "string", required: true }
 
     schemadmz =
         name: "shorewalldmz"
@@ -184,10 +184,10 @@
         additionalProperties: false
         properties:
                 commonname : {"type":"string", "required":true}
-                'ZONE':          { type: "string", required: true }
-                'INTERFACE':     { type: "string", required: true }
-                'BROADCAST':       { type: "string", required: true }
-                'OPTIONS':           { type: "string", required: true }
+                'ZONE':      { type: "string", required: true }
+                'INTERFACE': { type: "string", required: true }
+                'BROADCAST': { type: "string", required: true }
+                'OPTIONS':   { type: "string", required: true }
 
     schemarules =
         name: "shorewallrules"
@@ -196,16 +196,16 @@
         properties:
                 commonname : {"type":"string", "required":true}
                 "FTP(DROP)":
-                    items: {"type":"string"}
+                    items:   {"type":"string"}
                 ACCEPT:
-                    items: {"type":"string"}
+                    items:   {"type":"string"}
 
     schemaaccept =
         name: "shorewallaccept"
         type: "object"
         additionalProperties: false
         properties:
-                commonname : {"type":"string", "required":true}
+                commonname :       {"type":"string", "required":true}
                 'ACTION':          { type: "string", required: true }
                 'SOURCE_zone':     { type: "string", required: true }
                 'DEST_zone':       { type: "string", required: true }
@@ -227,7 +227,7 @@
         type: "object"
         additionalProperties: false
         properties:
-                commonname : {"type":"string", "required":true}
+                commonname :       {"type":"string", "required":true}
                 'ACTION':          { type: "string", required: true }
                 'SOURCE_zone':     { type: "string", required: true }
                 'DEST_zone':       { type: "string", required: true }
@@ -249,7 +249,7 @@
         type: "object"
         additionalProperties: false
         properties:
-                commonname : {"type":"string", "required":true}
+                commonname :       {"type":"string", "required":true}
                 'ACTION':          { type: "string", required: true }
                 'SOURCE_zone':     { type: "string", required: true }
                 'DEST_zone':       { type: "string", required: true }
@@ -270,7 +270,7 @@
         type: "object"
         additionalProperties: false
         properties:
-                commonname : {"type":"string", "required":true}
+                commonname :       {"type":"string", "required":true}
                 'ACTION':          { type: "string", required: true }
                 'SOURCE_zone':     { type: "string", required: true }
                 'DEST_zone':       { type: "string", required: true }
@@ -291,7 +291,7 @@
         type: "object"
         additionalProperties: false
         properties:
-                commonname : {"type":"string", "required":true}
+                commonname :       {"type":"string", "required":true}
                 'ACTION':          { type: "string", required: true }
                 'SOURCE_zone':     { type: "string", required: true }
                 'DEST_zone':       { type: "string", required: true }
@@ -313,7 +313,7 @@
         type: "object"
         additionalProperties: false
         properties:
-                commonname : {"type":"string", "required":true}
+                commonname :       {"type":"string", "required":true}
                 'ACTION':          { type: "string", required: true }
                 'SOURCE_zone':     { type: "string", required: true }
                 'DEST_zone':       { type: "string", required: true }
@@ -334,7 +334,7 @@
         type: "object"
         additionalProperties: false
         properties:
-                commonname : {"type":"string", "required":true}
+                commonname :       {"type":"string", "required":true}
                 'ACTION':          { type: "string", required: true }
                 'SOURCE_zone':     { type: "string", required: true }
                 'DEST_zone':       { type: "string", required: true }
@@ -355,7 +355,7 @@
         type: "object"
         additionalProperties: false
         properties:
-                commonname : {"type":"string", "required":true}
+                commonname :       {"type":"string", "required":true}
                 'ACTION':          { type: "string", required: true }
                 'SOURCE_zone':     { type: "string", required: true }
                 'DEST_zone':       { type: "string", required: true }
