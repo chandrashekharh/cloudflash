@@ -9,6 +9,7 @@
        client: require('dirty') '/tmp/shorewallclient.db'
     
     cloudflash = require './cloudflash', { include: @include }
+    services = require './services', { include: @include }
     
     
     #Test schema to validate incoming JSON
@@ -897,16 +898,13 @@
         service = @request.service
         config = ''
         for key, val of @body
-            switch (typeof val)
-                when "object"
-                    if val instanceof Array
-                        tmp = "#{val}\t"                       
-                        for i in val                            
-                               tmp += "#{i}\t" if key is "ACCEPT"
-                        config += tmp + "\t"                                                        
-                when "number", "string" 
-                    if key isnt 'commonname'
-                        config += val + "\t"
+              if @body.ACTION isnt 'ACCEPT'
+                  console.log "ACTION val is not correct "
+                  @send { result:false }
+                  return { result:false }
+              if key isnt 'commonname'
+                  config += val + "\t"
+
         console.log "rules config: " + config
         config += "\n"
         filename = "/config/shorewall/#{@body.commonname}/rules"
@@ -936,16 +934,13 @@
         service = @request.service
         config = ''
         for key, val of @body
-            switch (typeof val)
-                when "object"
-                    if val instanceof Array
-                        tmp = "#{val}\t"                       
-                        for i in val                            
-                               tmp += "#{i}\t" if key is "DROP"
-                        config += tmp + "\t"                                                        
-                when "number", "string" 
-                    if key isnt 'commonname'
-                        config += val + "\t"
+              if @body.ACTION isnt 'DROP'
+                  console.log "ACTION val is not correct "
+                  @send { result:false }
+                  return { result:false }
+              if key isnt 'commonname'
+                  config += val + "\t"
+
         console.log "rules config: " + config
         config += "\n"
         filename = "/config/shorewall/#{@body.commonname}/rules"
@@ -974,16 +969,13 @@
         service = @request.service
         config = ''
         for key, val of @body
-            switch (typeof val)
-                when "object"
-                    if val instanceof Array
-                        tmp = "#{val}\t"                       
-                        for i in val                            
-                               tmp += "#{i}\t" if key is "REJECT"
-                        config += tmp + "\t"                                                        
-                when "number", "string" 
-                    if key isnt 'commonname'
-                        config += val + "\t"
+              if @body.ACTION isnt 'REJECT'
+                  console.log "ACTION val is not correct "
+                  @send { result:false }
+                  return { result:false }
+              if key isnt 'commonname'
+                  config += val + "\t"
+
         console.log "rules config: " + config
         config += "\n"
         filename = "/config/shorewall/#{@body.commonname}/rules"
@@ -1012,16 +1004,13 @@
         service = @request.service
         config = ''
         for key, val of @body
-            switch (typeof val)
-                when "object"
-                    if val instanceof Array
-                        tmp = "#{val}\t"                       
-                        for i in val                            
-                               tmp += "#{i}\t" if key is "REDIRECT"
-                        config += tmp + "\t"                                                        
-                when "number", "string" 
-                    if key isnt 'commonname'
-                        config += val + "\t"
+              if @body.ACTION isnt 'REDIRECT'
+                  console.log "ACTION val is not correct "
+                  @send { result:false }
+                  return { result:false }
+              if key isnt 'commonname'
+                  config += val + "\t"
+
         console.log "rules config: " + config
         config += "\n"
         filename = "/config/shorewall/#{@body.commonname}/rules"
@@ -1050,16 +1039,13 @@
         service = @request.service
         config = ''
         for key, val of @body
-            switch (typeof val)
-                when "object"
-                    if val instanceof Array
-                        tmp = "#{val}\t"                       
-                        for i in val                            
-                               tmp += "#{i}\t" if key is "DNAT"
-                        config += tmp + "\t"                                                        
-                when "number", "string" 
-                    if key isnt 'commonname'
-                        config += val + "\t"
+              if @body.ACTION isnt 'DNAT'
+                  console.log "ACTION val is not correct "
+                  @send { result:false }
+                  return { result:false }
+              if key isnt 'commonname'
+                  config += val + "\t"
+
         console.log "rules config: " + config
         config += "\n"
         filename = "/config/shorewall/#{@body.commonname}/rules"
@@ -1088,16 +1074,13 @@
         service = @request.service
         config = ''
         for key, val of @body
-            switch (typeof val)
-                when "object"
-                    if val instanceof Array
-                        tmp = "#{val}\t"                       
-                        for i in val                            
-                               tmp += "#{i}\t" if key is "QUEUE"
-                        config += tmp + "\t"                                                        
-                when "number", "string" 
-                    if key isnt 'commonname'
-                        config += val + "\t"
+              if @body.ACTION isnt 'QUEUE'
+                  console.log "ACTION val is not correct "
+                  @send { result:false }
+                  return { result:false }
+              if key isnt 'commonname'
+                  config += val + "\t"
+
         console.log "rules config: " + config
         config += "\n"
         filename = "/config/shorewall/#{@body.commonname}/rules"
@@ -1127,16 +1110,13 @@
         service = @request.service
         config = ''
         for key, val of @body
-            switch (typeof val)
-                when "object"
-                    if val instanceof Array
-                        tmp = "#{val}\t"                       
-                        for i in val                            
-                               tmp += "#{i}\t" if key is "NFQUEUE"
-                        config += tmp + "\t"                                                        
-                when "number", "string" 
-                    if key isnt 'commonname'
-                        config += val + "\t"
+              if @body.ACTION isnt 'NFQUEUE'
+                  console.log "ACTION val is not correct "
+                  @send { result:false }
+                  return { result:false }
+              if key isnt 'commonname'
+                  config += val + "\t"
+
         console.log "rules config: " + config
         config += "\n"
         filename = "/config/shorewall/#{@body.commonname}/rules"
@@ -1165,16 +1145,13 @@
         service = @request.service
         config = ''
         for key, val of @body
-            switch (typeof val)
-                when "object"
-                    if val instanceof Array
-                        tmp = "#{val}\t"                       
-                        for i in val                            
-                               tmp += "#{i}\t" if key is "NONAT"
-                        config += tmp + "\t"                                                        
-                when "number", "string" 
-                    if key isnt 'commonname'
-                        config += val + "\t"
+              if @body.ACTION isnt 'NONAT'
+                  console.log "ACTION val is not correct "
+                  @send { result:false }
+                  return { result:false }
+              if key isnt 'commonname'
+                  config += val + "\t"
+
         console.log "rules config: " + config
         config += "\n"
         filename = "/config/shorewall/#{@body.commonname}/rules"
@@ -1203,16 +1180,13 @@
         service = @request.service
         config = ''
         for key, val of @body
-            switch (typeof val)
-                when "object"
-                    if val instanceof Array
-                        tmp = "#{val}\t"                       
-                        for i in val                            
-                               tmp += "#{i}\t" if key is "NET"
-                        config += tmp + "\t"                                                        
-                when "number", "string" 
-                    if key isnt 'commonname'
-                        config += val + "\t"
+              if @body.ZONE isnt 'net'
+                  console.log "ZONE val is not correct "
+                  @send { result:false }
+                  return { result:false }
+              if key isnt 'commonname'
+                  config += val + "\t"
+
         console.log "rules config: " + config
         config += "\n"
         filename = "/config/shorewall/#{@body.commonname}/interfaces"
@@ -1240,16 +1214,13 @@
         service = @request.service
         config = ''
         for key, val of @body
-            switch (typeof val)
-                when "object"
-                    if val instanceof Array
-                        tmp = "#{val}\t"                       
-                        for i in val                            
-                               tmp += "#{i}\t" if key is "LOC"
-                        config += tmp + "\t"                                                        
-                when "number", "string" 
-                    if key isnt 'commonname'
-                        config += val + "\t"
+              if @body.ZONE isnt 'loc'
+                  console.log "ZONE val is not correct "
+                  @send { result:false }
+                  return { result:false }
+              if key isnt 'commonname'
+                  config += val + "\t"
+
         console.log "rules config: " + config
         config += "\n"
         filename = "/config/shorewall/#{@body.commonname}/interfaces"
@@ -1278,19 +1249,13 @@
             service = @request.service
             config = ''
             for key, val of @body
-                switch (typeof val)
-                    when "object"
-                        if val instanceof Array
-                            tmp = "#{key}\t"                       
-                            for i in val                            
-                                   tmp += "#{i}\t" if key is "ZONE"
-                                   tmp += "#{i}\t" if key is "INTERFACE"
-                                   tmp += "#{i}\t" if key is "BROADCAST"
-                                   tmp += "#{i}\t" if key is "OPTIONS"
-                            config += key + "\t"                                                        
-                    when "number", "string" 
-                        if key isnt 'commonname'
-                            config += val + "\t"
+              if @body.ZONE isnt 'dmz'
+                  console.log "ZONE val is not correct "
+                  @send { result:false }
+                  return { result:false }
+              if key isnt 'commonname'
+                  config += val + "\t"
+
             console.log "rules config: " + config
             config += "\n"
             filename = "/config/shorewall/#{@body.commonname}/interfaces"
@@ -1318,10 +1283,13 @@
           service = @request.service
           config = ''
           for key, val of @body
-              switch (typeof val)
-                  when "number", "string" 
-                      if key isnt 'commonname'
-                          config += val + "\t"
+              if @body.ZONES isnt 'fw'
+                  console.log "ZONE val is not correct "
+                  @send { result:false }
+                  return { result:false }
+              if key isnt 'commonname'
+                  config += val + "\t"
+
           console.log "fwzones config: " + config
           config += "\n"
           filename = "/config/shorewall/#{@body.commonname}/zones"
@@ -1349,10 +1317,13 @@
           service = @request.service
           config = ''
           for key, val of @body
-              switch (typeof val)
-                  when "number", "string" 
-                      if key isnt 'commonname'
-                          config += val + "\t"
+              if @body.ZONES isnt 'loc'
+                  console.log "ZONE val is not correct "
+                  @send { result:false }
+                  return { result:false }
+              if key isnt 'commonname'
+                  config += val + "\t"
+
           console.log "fwzones config: " + config
           config += "\n"
           filename = "/config/shorewall/#{@body.commonname}/zones"
@@ -1380,10 +1351,13 @@
           service = @request.service
           config = ''
           for key, val of @body
-              switch (typeof val)
-                  when "number", "string" 
-                      if key isnt 'commonname'
-                          config += val + "\t"
+              if @body.ZONES isnt 'net'
+                  console.log "ZONE val is not correct "
+                  @send { result:false }
+                  return { result:false }
+              if key isnt 'commonname'
+                  config += val + "\t"
+
           console.log "fwzones config: " + config
           config += "\n"
           filename = "/config/shorewall/#{@body.commonname}/zones"
@@ -1412,10 +1386,13 @@
           service = @request.service
           config = ''
           for key, val of @body
-              switch (typeof val)
-                  when "number", "string" 
-                      if key isnt 'commonname'
-                          config += val + "\t"
+              if @body.ZONES isnt 'dmz'
+                  console.log "ZONE val is not correct "
+                  @send { result:false }
+                  return { result:false }
+              if key isnt 'commonname'
+                  config += val + "\t"
+
           console.log "fwzones config: " + config
           config += "\n"
           filename = "/config/shorewall/#{@body.commonname}/zones"
@@ -1444,10 +1421,13 @@
           service = @request.service
           config = ''
           for key, val of @body
-              switch (typeof val)
-                  when "number", "string" 
-                      if key isnt 'commonname'
-                          config += val + "\t"
+              if @body.SRC_ZONE isnt 'fw'
+                  console.log "SRC_ZONE val is not correct "
+                  @send { result:false }
+                  return { result:false }
+              if key isnt 'commonname'
+                  config += val + "\t"
+
           console.log "fwzones config: " + config
           config += "\n"
           filename = "/config/shorewall/#{@body.commonname}/policy"
@@ -1475,10 +1455,13 @@
           service = @request.service
           config = ''
           for key, val of @body
-              switch (typeof val)
-                  when "number", "string" 
-                      if key isnt 'commonname'
-                          config += val + "\t"
+              if @body.SRC_ZONE isnt 'net'
+                  console.log "SRC_ZONE val is not correct "
+                  @send { result:false }
+                  return { result:false }
+              if key isnt 'commonname'
+                  config += val + "\t"
+
           console.log "fwzones config: " + config
           config += "\n"
           filename = "/config/shorewall/#{@body.commonname}/policy"
@@ -1507,10 +1490,13 @@
           service = @request.service
           config = ''
           for key, val of @body
-              switch (typeof val)
-                  when "number", "string" 
-                      if key isnt 'commonname'
-                          config += val + "\t"
+              if @body.SRC_ZONE isnt 'loc'
+                  console.log "SRC_ZONE val is not correct "
+                  @send { result:false }
+                  return { result:false }
+              if key isnt 'commonname'
+                  config += val + "\t"
+
           console.log "fwzones config: " + config
           config += "\n"
           filename = "/config/shorewall/#{@body.commonname}/policy"
@@ -1539,10 +1525,13 @@
           service = @request.service
           config = ''
           for key, val of @body
-              switch (typeof val)
-                  when "number", "string" 
-                      if key isnt 'commonname'
-                          config += val + "\t"
+              if @body.SRC_ZONE isnt 'dmz'
+                  console.log "SRC_ZONE val is not correct "
+                  @send { result:false }
+                  return { result:false }
+              if key isnt 'commonname'
+                  config += val + "\t"
+
           console.log "fwzones config: " + config
           config += "\n"
           filename = "/config/shorewall/#{@body.commonname}/policy"
@@ -1571,10 +1560,13 @@
           service = @request.service
           config = ''
           for key, val of @body
-              switch (typeof val)
-                  when "number", "string" 
-                      if key isnt 'commonname'
-                          config += val + "\t"
+              if @body.SRC_ZONES isnt 'all'
+                  console.log "SRC_ZONE val is not correct "
+                  @send { result:false }
+                  return { result:false } 
+              if key isnt 'commonname'
+                  config += val + "\t"
+
           console.log "fwzones config: " + config
           config += "\n"
           filename = "/config/shorewall/#{@body.commonname}/policy"
@@ -1596,3 +1588,33 @@
                   @send { result: true }
           catch err
               @next new Error "Unable to write shorewall configuration into #{filename}!"
+
+
+    @get '/services/:id/shorewall/policy/allpolicy' : ->
+        result = db.client.get @params.id
+        console.log "result: " + result
+        @send result #{"status": "#{policy status}"}
+
+
+    @del '/services/:id/shorewall/zones/fwzones' : ->
+        clientid = @params.id
+        entry = db.client.get clientid
+        try
+#            throw new Error "shorewall service ID does not exist!" unless entry
+
+            filename = "/config/shorewall/client1/zones"
+            console.log "removing network config on #{filename}..."
+            path.exists filename, (exists) =>
+                throw new Error "file already removed!" unless exists
+#                console.log "#{filename} file already removed"
+#                return { result: false }
+
+                fs.unlink filename, (err) =>
+                    throw err if err
+
+                    db.client.rm clientid, =>
+                        console.log "removed network ID: #{clientid}"
+                        @send { deleted: true }
+        catch err
+            @next new Error "Unable to remove network ID: #{clientid} due to #{err}"
+
